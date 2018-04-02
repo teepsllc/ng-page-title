@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- '0.12'
+matrix:
+  fast_finish: true
+sudo: false
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+before_script:
+- npm install -g grunt-cli
+script:
+- grunt build
+deploy:
+  provider: npm
+  email: simon@simonemms.com
+  api_key:
+    secure: AFaalGqDY14LRRrvWExP6S3hcp9y48Lz9g++R3Qu2VIDMUoSdB/Ka892EZPV48RcUs2fR1MAFeKxEyoL4ErL+8G2FJfavp5hU/9BA6uHCtGy+ZWUGXur/zDnL3zXBbCTBXpRmpdU1SS3CNSDQI/Nd+EavzI1ly5Sn/WK+uifs4uwIeAMqLbfckeYgI/dbedJ0hdptR6IxHF0yMnCSOECxVhl1O999weSqck5w0NVOnIAgIpc+lxprtAg356jxbVjMJkUOIMdlOXoHhW6tQ0LNaZ5+0JnPydM1P3jT+BROIdiX+plYJO5WU9rEL+HhvSRtQcWkc6kUgcg9H68aRKbeniOTvfcE8VfXlWgxVcDfshd11Oj/gKTKn5ckRtX+QOrAkax4m1zoK1dnVkR/k+3MmzzDFJf8FKzIApJ01+N3kIdxgJwE8FOvq5lgRlveGtJLzJspdZW117egFtl3tBxwLhqyefXRO6xCCIDOnbiTuZybGBB+GlsM2dqTVCJk1PLQsrX9QMpRWW49iFAo85QtJ+zGJynk7C5HVhxglKg5ddpl7Asz4x8Ui5utgQKmmgFKRsJMTgyd4V/K5zG2DGsnBGERvfd5e8QNtm9A2mjcjkcMRAsMZ8sRAikM8ZBm74difVl4K2scEUZZazondWn2Jwu4MGOEvnqn5yFWo4Dh5Y=
+  skip_cleanup: true
+  on:
+    all_branches: true
+    tags: true
+    repo: riggerthegeek/ng-page-title
